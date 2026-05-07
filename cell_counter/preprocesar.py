@@ -5,7 +5,7 @@ from scipy import signal
 def convert2gray(image):
     return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-def transf_intensidad(image):
+def transf_intensity(image):
     m = 150
     e = 7
 
@@ -16,12 +16,12 @@ def transf_intensidad(image):
 
     return s
 
-def pasa_bajas_fourier(image):
+def fourier_lowPass(image, radius_mask):
     rows, cols = image.shape
     crow, ccol = rows//2, cols//2
 
     mask = np.zeros((rows,cols), np.float32)
-    cv2.circle(mask, (ccol, crow), 75, 1, -1)
+    cv2.circle(mask, (ccol, crow), radius_mask, 1, -1)
     f = np.fft.fft2(image)
     fshift = np.fft.fftshift(f)
     magnitude_spectrum_1 = 20*np.log(np.abs(fshift)+1)
@@ -34,7 +34,7 @@ def pasa_bajas_fourier(image):
 
     return img_baja
 
-def filtro_sobel(image):
+def filter_sobel(image):
     kernel_sx = np.array([[-1, 0, 1],
                       [-2, 0, 2],
                       [-1, 0, 1]], dtype=np.float32)
