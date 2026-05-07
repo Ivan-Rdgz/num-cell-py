@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-import scipy as signal 
+from scipy import signal
 
 def convert2gray(image):
     return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
