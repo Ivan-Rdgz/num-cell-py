@@ -6,7 +6,7 @@ from cell_counter.preprocesar import filtro_pasa_bajas, intensidad_gamma, filter
 from cell_counter.segmentacion import umbralizar, segmentar, componentes_conectados
 from skimage import data
 
-img = cv2.imread("data/img2_blood.jpg")
+img = cv2.imread("data/img4_protoplasts.jpg")
 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 img_gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 
