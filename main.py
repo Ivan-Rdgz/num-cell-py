@@ -5,17 +5,21 @@ import matplotlib.pyplot as plt
 from cell_counter.preprocesar import convert2gray, transf_intensity, fourier_lowPass, filter_sobel
 from cell_counter.segmentacion import segment_otsu
 from cell_counter.analisis import count_cells_by_regions
+from skimage import data
 
-img = cv2.imread("data/Lipocitos.jpg")
+img = cv2.imread("data/Sangre3.jpg")
+
 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
+
+
 img_gray = convert2gray(img)
-img_trans = transf_intensity(img_gray)
-img_f = fourier_lowPass(img_trans)
-img_sobel = filter_sobel(img_f)
+img_trans = transf_intensity(img_gray, e=5)
+img_f = fourier_lowPass(img_trans, radius_mask=80)
+img_sobel = filter_sobel(img_f, threshold_L=50, threshold_H=150)
 img_seg = segment_otsu(img_sobel)
 
-x, y ,z = count_cells_by_regions(img_seg)
+x, y ,z = count_cells_by_regions(img_seg, min_area=50, max_area=10000)
 print("cells: ", x)
 
 plt.figure(1)
