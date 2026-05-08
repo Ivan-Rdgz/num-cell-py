@@ -4,10 +4,9 @@ from scipy import signal
 import matplotlib.pyplot as plt
 from cell_counter.preprocesar import filtro_pasa_bajas, intensidad_gamma, filter_sobel
 from cell_counter.segmentacion import umbralizar, segmentar, componentes_conectados
-from skimage import data
+from cell_counter import data
 
-img = cv2.imread("data/img14_stemCells.jpg")
-img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+img = data.onion_5()
 img_gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 
 img1 = filtro_pasa_bajas(img_gray, radio=30)
