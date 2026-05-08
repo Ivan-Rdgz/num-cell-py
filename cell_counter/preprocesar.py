@@ -29,11 +29,9 @@ def filter_sobel(img):
                         [ 0,  0,  0],
                         [-1, -2, -1]], dtype=np.float32)
 
-    # Aplicamos convolución con signal (como el profe)
     edges_sx = signal.convolve2d(img, kernel_sx, mode ='same')
     edges_sy = signal.convolve2d(img, kernel_sy, mode ='same')
 
-    # Magnitud del gradiente manual
     bordes_sobel = np.sqrt(edges_sx**2 + edges_sy**2)
     bordes_sobel = cv2.normalize(bordes_sobel, None, 0, 255, cv2.NORM_MINMAX).astype('uint8')
     return bordes_sobel

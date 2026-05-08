@@ -9,8 +9,6 @@ def _load_image(name):
     img = cv2.imread(path)
     return cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-# --- Funciones tipo Scikit-Image ---
-
 def sangre():
     return _load_image("img1_blood.jpg")
 
