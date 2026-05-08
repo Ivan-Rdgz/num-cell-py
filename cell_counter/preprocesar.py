@@ -5,7 +5,7 @@ from scipy import signal
 def convert2gray(image):
     return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-def transf_intensity(image, e):
+def transf_intensity(image, e = 5 ):
     m = np.mean(image)
 
     s = 1/(1+m/image)**e
@@ -15,7 +15,7 @@ def transf_intensity(image, e):
 
     return s
 
-def fourier_lowPass(image, radius_mask):
+def fourier_lowPass(image, radius_mask = 80):
     rows, cols = image.shape
     crow, ccol = rows//2, cols//2
 
@@ -33,7 +33,7 @@ def fourier_lowPass(image, radius_mask):
 
     return img_baja
 
-def filter_sobel(image):
-    edges_canny = cv2.Canny(image,50,150) 
+def filter_sobel(image, threshold_L = 50, threshold_H = 150):
+    edges_canny = cv2.Canny(image, threshold_L,threshold_H) 
     return edges_canny
 
