@@ -12,3 +12,7 @@ dependencies = [
     "scipy",
     "matplotlib"
 ]
+
+# --- AGREGA ESTO DE AQUÍ ABAJO ---
+[tool.setuptools]
+packages = ["cell_counter"]
