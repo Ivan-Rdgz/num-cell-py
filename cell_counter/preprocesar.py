@@ -5,9 +5,8 @@ from scipy import signal
 def convert2gray(image):
     return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-def transf_intensity(image):
-    m = 150
-    e = 7
+def transf_intensity(image, e):
+    m = np.mean(image)
 
     s = 1/(1+m/image)**e
     s = (s - s.min())/(s.max() - s.min())
@@ -35,18 +34,6 @@ def fourier_lowPass(image, radius_mask):
     return img_baja
 
 def filter_sobel(image):
-    kernel_sx = np.array([[-1, 0, 1],
-                      [-2, 0, 2],
-                      [-1, 0, 1]], dtype=np.float32)
-
-    kernel_sy = np.array([[ 1,  2,  1],
-                      [ 0,  0,  0],
-                      [-1, -2, -1]], dtype=np.float32)
-    
-    edges_sx = signal.convolve2d(image, kernel_sx, mode ='same')
-    edges_sy = signal.convolve2d(image, kernel_sy, mode ='same')
-
-    sobel = cv2.magnitude(edges_sx, edges_sy)
-
-    return sobel
+    edges_canny = cv2.Canny(image,50,150) 
+    return edges_canny
 
