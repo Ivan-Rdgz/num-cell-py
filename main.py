@@ -6,12 +6,12 @@ from cell_counter.preprocesar import convert2gray, transf_intensity, fourier_low
 from cell_counter.segmentacion import segment_otsu
 from cell_counter.analisis import count_cells_by_regions
 
-img = cv2.imread("data/Sangre3.jpg")
+img = cv2.imread("data/Lipocitos.jpg")
 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
 img_gray = convert2gray(img)
-img_trans = transf_intensity(img_gray, e = 5)
-img_f = fourier_lowPass(img_trans,radius_mask= 80)
+img_trans = transf_intensity(img_gray)
+img_f = fourier_lowPass(img_trans)
 img_sobel = filter_sobel(img_f)
 img_seg = segment_otsu(img_sobel)
 
@@ -21,8 +21,8 @@ print("cells: ", x)
 plt.figure(1)
 plt.subplot(2,2,1), plt.imshow(img_trans, cmap='gray'), plt.title('Transformación')
 plt.subplot(2,2,2), plt.imshow(img_f, cmap='gray'), plt.title('fourier')
-plt.subplot(2,2,3), plt.imshow(img_sobel, cmap='gray'), plt.title('segmentar')
-plt.subplot(2,2,4), plt.imshow(img_sobel, cmap='gray'), plt.title('sobel')
+plt.subplot(2,2,3), plt.imshow(img_sobel, cmap='gray'), plt.title('FIltro Bordes')
+plt.subplot(2,2,4), plt.imshow(img_seg, cmap='gray'), plt.title('Segmentar')
 plt.figure(2)
 plt.imshow(y, cmap='gray')
 plt.show()
