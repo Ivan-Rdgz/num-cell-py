@@ -2,31 +2,21 @@ import cv2
 import numpy as np
 from scipy import signal
 import matplotlib.pyplot as plt
-from cell_counter.preprocesar import convert2gray, transf_intensity, fourier_lowPass, filter_sobel
-from cell_counter.segmentacion import segment_otsu
-from cell_counter.analisis import count_cells_by_regions
+from cell_counter.preprocesar import filtro_pasa_bajas, intensidad_gamma, filter_sobel
+from cell_counter.segmentacion import umbralizar, segmentar, componentes_conectados
 from skimage import data
 
-img = cv2.imread("data\sangre.jpg")
-
+img = cv2.imread("data/img2_blood.jpg")
 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+img_gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 
+img1 = filtro_pasa_bajas(img_gray, radio=30)
+img2 = intensidad_gamma(img1, gamma = 1.2)
+img3 = umbralizar(img2)
+img4 = segmentar(img3)
+img_final, conteo_final = componentes_conectados(img4, img_gray)
 
-
-img_gray = convert2gray(img)
-img_trans = transf_intensity(img_gray, e=4)
-img_f = fourier_lowPass(img_trans, radius_mask=75)
-img_sobel = filter_sobel(img_f, threshold_L=80, threshold_H=300)
-img_seg = segment_otsu(img_sobel)
-
-x, y ,z = count_cells_by_regions(img_seg, min_area=50, max_area=10000)
-print("cells: ", x)
-
-plt.figure(1)
-plt.subplot(2,2,1), plt.imshow(img_trans, cmap='gray'), plt.title('Transformación')
-plt.subplot(2,2,2), plt.imshow(img_f, cmap='gray'), plt.title('fourier')
-plt.subplot(2,2,3), plt.imshow(img_sobel, cmap='gray'), plt.title('FIltro Bordes')
-plt.subplot(2,2,4), plt.imshow(img_seg, cmap='gray'), plt.title('Segmentar')
-plt.figure(2)
-plt.imshow(y, cmap='gray')
+plt.close('all')
+plt.figure()
+plt.imshow(img_final), plt.title(f'Conteo: {conteo_final}')
 plt.show()
