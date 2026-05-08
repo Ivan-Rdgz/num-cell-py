@@ -6,11 +6,14 @@ from cell_counter.preprocesar import filtro_pasa_bajas, intensidad_gamma, filter
 from cell_counter.segmentacion import umbralizar, segmentar, componentes_conectados
 from cell_counter import data
 
-img = data.onion_5()
-img_gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
+GAMMA = 1.2 
+RADIO = 30
 
-img1 = filtro_pasa_bajas(img_gray, radio=30)
-img2 = intensidad_gamma(img1, gamma = 1.2)
+img = data.sangre()
+img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+img1 = filtro_pasa_bajas(img_gray, radio=RADIO)
+img2 = intensidad_gamma(img1, gamma = GAMMA)
 img3 = umbralizar(img2)
 img4 = segmentar(img3)
 img_final, conteo_final = componentes_conectados(img4, img_gray)
