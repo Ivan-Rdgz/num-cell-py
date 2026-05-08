@@ -1,13 +1,14 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "cell_counter"
 version = "0.1.0"
-description = "Librería para el conteo de células en imágenes microscópicas"
+description = "Librería para conteo y segmentación de células"
 dependencies = [
+    "opencv-python",
     "numpy",
-    "matplotlib",
-    "opencv-python"
+    "scipy",
+    "matplotlib"
 ]
