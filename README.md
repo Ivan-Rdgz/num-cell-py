@@ -33,7 +33,7 @@ Las dependencias principales del proyecto son:
     ```bash
    git clone https://github.com/Ivan-Rdgz/num-cell-py.git
    ```
-2. Instala las dependencias necesarias. Puedes usar `pip`:
+2. Instala las dependencias necesarias:
    ```bash
    pip install opencv-python numpy scipy matplotlib
    ```
@@ -42,3 +42,11 @@ Las dependencias principales del proyecto son:
    python main.py
    ```
    Esto procesará la imagen por defecto (células sanguíneas) y mostrará una ventana con los resultados del conteo y las células resaltadas en un rectangulo.
+
+## Autores
+* Aaron Padilla Pizaña
+* Daniela Rangel Quiroz 
+* Iván de Jesús Rodríguez Flores 
+* Rubén Uriel Sandoval de la Rosa 
+
+ 
