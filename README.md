@@ -27,21 +27,23 @@ Las dependencias principales del proyecto son:
 * `scipy`
 * `matplotlib` (para visualización)
 
-## Instalación y Uso
+## Instalación y uso
 
-1. Clona el repositorio.
+1. Clonar el repositorio.
     ```bash
    git clone https://github.com/Ivan-Rdgz/num-cell-py.git
    ```
-2. Instala las dependencias necesarias:
+2. Instalar las dependencias necesarias:
    ```bash
    pip install opencv-python numpy scipy matplotlib
    ```
-3. Ejecuta el script principal:
+3. Ejecutar el script principal:
    ```bash
    python main.py
    ```
    Esto procesará la imagen por defecto (células sanguíneas) y mostrará una ventana con los resultados del conteo y las células resaltadas en un rectangulo.
+   
+4. **Para cambiar de imágenes:** Editar el archivo `main.py` y sustituye la línea `img = data.blood()` por la función correspondiente a la imagen que desees. Todas las funciones de carga están definidas en el archivo `cell_counter/data.py` y las opciones disponibles son: `blood()`, `chlorella()`, `animal()`, `onion_1()` a `onion_7()`, `monocytes()`, `stem()`, `tissue()`, `dna()`, y `human()`.
 
 ## Autores
 * Aaron Padilla Pizaña
