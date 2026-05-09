@@ -42,8 +42,11 @@ Las dependencias principales del proyecto son:
    python main.py
    ```
    Esto procesará la imagen por defecto (células sanguíneas) y mostrará una ventana con los resultados del conteo y las células resaltadas en un rectangulo.
-   
-4. **Para cambiar de imágenes:** Editar el archivo `main.py` y sustituye la línea `img = data.blood()` por la función correspondiente a la imagen que desees. Todas las funciones de carga están definidas en el archivo `cell_counter/data.py` y las opciones disponibles son: `blood()`, `chlorella()`, `animal()`, `onion_1()` a `onion_7()`, `monocytes()`, `stem()`, `tissue()`, `dna()`, y `human()`.
+
+4. **Para cambiar de imágenes:** Editar el archivo `main.py` y sustituir la línea `img = data.blood()` por la función correspondiente a la imagen que desees. Todas las funciones de carga están definidas en el archivo `cell_counter/data.py` y las opciones disponibles son: `blood()`, `chlorella()`, `animal()`, `onion_1()` a `onion_7()`, `monocytes()`, `stem()`, `tissue()`, `dna()`, y `human()`.
+
+## Resultados
+![Resultado del conteo de células de cebolla](/ejemplo_resultado.png)
 
 ## Autores
 * Aaron Padilla Pizaña
