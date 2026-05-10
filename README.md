@@ -29,9 +29,11 @@ Las dependencias principales del proyecto son:
 
 ## Instalación y uso
 
-1. Clonar el repositorio.
+El proyecto está estructurado como paquete de Python, permitiendo usar sus funciones de procesamiento en cualquier otro script.
+
+1. Instalar la librería.
     ```bash
-   git clone https://github.com/Ivan-Rdgz/num-cell-py.git
+   pip install git+https://github.com/Ivan-Rdgz/num-cell-py.git
    ```
 2. Instalar las dependencias necesarias:
    ```bash
@@ -44,6 +46,20 @@ Las dependencias principales del proyecto son:
    Esto procesará la imagen por defecto (células sanguíneas) y mostrará una ventana con los resultados del conteo y las células resaltadas en un rectangulo.
 
 4. **Para cambiar de imágenes:** Editar el archivo `main.py` y sustituir la línea `img = data.blood()` por la función correspondiente a la imagen que desees. Todas las funciones de carga están definidas en el archivo `cell_counter/data.py` y las opciones disponibles son: `blood()`, `chlorella()`, `animal()`, `onion_1()` a `onion_7()`, `monocytes()`, `stem()`, `tissue()`, `dna()`, y `human()`.
+
+### Ejemplo de uso 
+   ```bash
+   import cell_counter
+   import matplotlib.pyplot as plt
+
+   img = cell_counter.data.blood()
+   conteo, img = cell_counter.count_cells(img)
+
+   plt.figure(1)
+   plt.imshow(img)
+   plt.show()
+
+   ```
 
 ## Resultados
 ![Resultado del conteo de células de cebolla](/ejemplo_resultado.png)
