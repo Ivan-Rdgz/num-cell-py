@@ -2,15 +2,13 @@ import cv2
 import numpy as np
 from scipy import signal
 
-from cell_counter.preprocesar import intensidad_gamma
-
 def umbralizar(img):
     umbral_propio = np.mean(img) - 10
     binaria = np.zeros(img.shape, dtype=np.uint8)
     binaria[img < umbral_propio] = 255
     return binaria
 
-def segmentar(img):
+def limpieza(img):
     filtro_limpieza = np.array([[1, 1, 1],
                                [1, 1, 1],
                                [1, 1, 1]], dtype=np.float32) / 9
