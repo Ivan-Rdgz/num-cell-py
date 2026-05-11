@@ -2,7 +2,7 @@ import os
 import cv2
 
 BASE_PATH = os.path.dirname(__file__)
-DATA_PATH = os.path.join(BASE_PATH, '..', 'data')
+DATA_PATH = os.path.join(BASE_PATH, 'data')
 
 def _load_image(name):
     path = os.path.normpath(os.path.join(DATA_PATH, name))
