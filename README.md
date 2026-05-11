@@ -39,13 +39,29 @@ El proyecto está estructurado como paquete de Python, permitiendo usar sus func
    ```bash
    pip install opencv-python numpy scipy matplotlib
    ```
-3. Ejecutar el script principal:
+3. Importar la librería y matplotlib.pyplot para la visualización
    ```bash
-   python main.py
+   import cell_counter
    ```
-   Esto procesará la imagen por defecto (células sanguíneas) y mostrará una ventana con los resultados del conteo y las células resaltadas en un rectangulo.
+4. Aplicar la funcion `cell_counter` a cualquier imagen de `data`
+   ```bash
+   img = cell_counter.data.blood()
+   ```
+ **Para cambiar de imágenes:** Sustituir la línea `img = cell_counter.data.blood()` por la función correspondiente a la imagen que desees. Todas las funciones de carga están definidas en el archivo `cell_counter/data.py` y las opciones disponibles son: `blood()`, `chlorella()`, `animal()`, `onion_1()` a `onion_7()`, `monocytes()`, `stem()`, `tissue()`, `dna()`, y `human()`.
 
-4. **Para cambiar de imágenes:** Editar el archivo `main.py` y sustituir la línea `img = data.blood()` por la función correspondiente a la imagen que desees. Todas las funciones de carga están definidas en el archivo `cell_counter/data.py` y las opciones disponibles son: `blood()`, `chlorella()`, `animal()`, `onion_1()` a `onion_7()`, `monocytes()`, `stem()`, `tissue()`, `dna()`, y `human()`.
+5. Definir el conteo y la imagen con `count_cells` 
+   ```bash
+   conteo, img = cell_counter.count_cells(img)
+   ```
+
+6. Plotear 
+   ```bash
+   plt.figure(1)
+   plt.imshow(img)
+   plt.show()
+   ```
+
+   Esto procesará la imagen por defecto (células sanguíneas) y mostrará una ventana con los resultados del conteo y las células resaltadas en un rectangulo.
 
 ### Ejemplo de uso 
    ```bash
