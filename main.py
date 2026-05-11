@@ -9,7 +9,7 @@ from cell_counter import data
 GAMMA = 1.2 
 RADIO = 30
 
-img = data.sangre()
+img = data.blood()
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 img1 = filtro_pasa_bajas(img_gray, radio=RADIO)
