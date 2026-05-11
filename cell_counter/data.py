@@ -9,11 +9,19 @@ def _load_image(name):
     if not os.path.exists(path):
         raise FileNotFoundError(f"No se encontró la imagen en: {path}")
     
+    path = os.path.normpath(os.path.join(DATA_PATH, name))
+    if not os.path.exists(path):
+        raise FileNotFoundError(f"No se encontró la imagen en: {path}")
+    
     img = cv2.imread(path)
     if img is None:
         raise ValueError(f"Error al leer la imagen (posible formato corrupto): {path}")
             
+    if img is None:
+        raise ValueError(f"Error al leer la imagen (posible formato corrupto): {path}")
+            
     return cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
 
 
 def blood():
