@@ -1,25 +1,11 @@
-import cv2
-import numpy as np
-from scipy import signal
+import cell_counter
 import matplotlib.pyplot as plt
-from cell_counter.preprocesar import filtro_pasa_bajas, intensidad_gamma, filter_sobel
-from cell_counter.segmentacion import umbralizar, limpieza, componentes_conectados
-from cell_counter import data
 
-GAMMA = 1.2 
-RADIO = 30
+img = cell_counter.data.blood()
+conteo, img = cell_counter.count_cells(img)
 
-img = data.blood()
-img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
-img1 = filtro_pasa_bajas(img_gray, radio=RADIO)
-img2 = intensidad_gamma(img1, gamma = GAMMA)
-img3 = umbralizar(img2)
-img4 = limpieza(img3)
-img_final, conteo_final = componentes_conectados(img4, img_gray)
-
-plt.close('all')
-plt.figure()
-plt.imshow(img_final), plt.title(f'Conteo: {conteo_final}')
+plt.figure(1)
+plt.imshow(img)
 plt.show()
+
 
