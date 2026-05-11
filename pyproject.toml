@@ -15,3 +15,6 @@ dependencies = [
 
 [tool.setuptools]
 packages = ["cell_counter"]
+
+[tool.setuptools.package-data]
+"*" = ["data/*.jpg", "data/*.png", "data/*.jpeg"]
