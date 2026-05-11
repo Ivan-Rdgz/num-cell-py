@@ -42,6 +42,7 @@ El proyecto está estructurado como paquete de Python, permitiendo usar sus func
 3. Importar la librería y matplotlib.pyplot para la visualización
    ```bash
    import cell_counter
+   import matplotlib.pyplot as plt
    ```
 4. Aplicar la funcion `cell_counter` a cualquier imagen de `data`
    ```bash
