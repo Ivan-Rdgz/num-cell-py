@@ -2,13 +2,9 @@ import os
 import cv2
 
 BASE_PATH = os.path.dirname(__file__)
-DATA_PATH = os.path.join(BASE_PATH, '..', 'data')
+DATA_PATH = os.path.join(BASE_PATH, 'data')
 
 def _load_image(name):
-    path = os.path.normpath(os.path.join(DATA_PATH, name))
-    if not os.path.exists(path):
-        raise FileNotFoundError(f"No se encontró la imagen en: {path}")
-    
     path = os.path.normpath(os.path.join(DATA_PATH, name))
     if not os.path.exists(path):
         raise FileNotFoundError(f"No se encontró la imagen en: {path}")
@@ -17,12 +13,7 @@ def _load_image(name):
     if img is None:
         raise ValueError(f"Error al leer la imagen (posible formato corrupto): {path}")
             
-    if img is None:
-        raise ValueError(f"Error al leer la imagen (posible formato corrupto): {path}")
-            
     return cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-
-
 
 def blood():
     return _load_image("img1_blood.jpg")
